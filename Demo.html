@@ -1,0 +1,67 @@
+,<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {
+  background-color: lightgrey;
+  width: 300px;
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;
+}
+table{
+    border: 5px solid red;
+    padding: 10px;
+    margin: 10px;
+}
+td,th{
+    border: 2px solid black;
+    padding: 10px;
+    text-align: left;
+}
+</style>
+</head>
+<body>
+
+<h2>Demonstrating the Box Model</h2>
+
+
+
+<div>Hello world!! This is a demo of CSS box model.</div>
+<div id="demo">
+    <p>Hello world</p>
+    </div>
+<p id="show"></p>
+<script>
+    let value=document.getElementById("demo");
+    let x=value.getElementsByTagName("p")
+    //console.log(value);
+   document.getElementById("show").innerHTML=x[0].innerHTML;
+
+</script>
+
+<table style="width: 100%;">
+    <tr>
+        <th>Sr.no</th>
+        <th>Books</th>
+        <th>Authors</th>
+    </tr>
+    <tr>
+        <td>01</td>
+        <td>Alchemist</td>
+        <td>Paulo Coelho</td>
+    </tr>
+    <tr>
+        <td>02</td>
+        <td>Metamorphosis</td>
+        <td>Franz Kafka</td>
+    </tr>
+</table>
+<label for="fname">First Name:</label>
+<input type="text"id="fname" name="fname" placeholder="Enter first name">
+<button onclick="">Submit</button><br><br>
+
+<a href="check.html">Click Here</a>
+
+</body>
+</html>

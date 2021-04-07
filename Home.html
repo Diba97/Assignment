@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 50%;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+.table {
+  text-align: center;
+  border: 5px solid black;
+  padding: 5px;
+  background-color: white;
+  margin: 2px
+}
+.table2 {
+  text-align: left;
+  font-size: 20px;
+  border: 5px solid black;
+  padding: 5px;
+  background-color: white;
+  margin: 2px
+}
+</style>
+</head>
+<body>
+
+<div>
+<table style="width:99.70%" class="table">
+  <tr>
+    <td>
+    <h1>Book Management System</h1>
+    </td>
+ </tr> 
+</table>
+</div>
+
+<div>
+<table style="width:99.70%" class="table2">
+<tr><td>
+  <label>Enter Book Name:</label>
+  <input type="text" id="bookname" required="">
+  <label>Enter Author Name:</label>
+  <input type="text" id="authorname" required="">
+  <button id="add_book" onclick="check_Function()">Add</button>
+</td></tr>
+</table>
+</div>
+
+<h2>Book List</h2>
+
+<label style="font-size: 25px">Search By:</label>
+<select name="Search Type" id="type">
+  <option value="ID">ID</option>
+  <option value="Name">Book Name</option>
+  <option value="Author">Author</option>
+</select>
+<input type="text" id="myInput" placeholder="Search for books.." title="Type in a name">
+<button onclick="myFunction()">Search</button>
+
+<table id="myTable">
+  <tr class="header">
+    <th style="width:50%;">Name</th>
+    <th style="width:25%;">Author</th>
+    <th style="width:25%;">Action</th>
+  </tr>
+  <tr>
+    <td>Alchemist</td>
+    <td>Paulo Coelho</td>
+    <td> <a href="">Delete</a>  </td>
+  </tr>
+  <tr>
+    
+    <td>Metamorphosis</td>
+    <td>Franz Kafka</td>
+    <td> <a href="">Delete</a>  </td>
+</tr>
+<tr>
+  <td>Beyond Good And Evil</td>
+  <td>Fredrick Neichze</td>
+  <td> <a href="">Delete</a>  </td>
+</tr>
+<tr>
+  <td>Crime And Punishment</td>
+  <td>Fyodor Dostoevsy </td>
+  <td> <a href="">Delete</a>  </td>
+ </tr>
+ <tr>
+  <td>1984</td>
+  <td>George Orwell </td>
+  <td> <a href="">Delete</a>  </td>
+ </tr>
+
+
+</table>
+<!-- Searching logic---->
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+<script>
+function add_BookFunction() {
+  var table = document.getElementById("myTable");
+  var row = table.insertRow(1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  cell1.innerHTML = document.getElementById("bookname").value;
+  cell2.innerHTML = document.getElementById("authorname").value;
+
+  var str = "Delete";
+  var result = str.link("");
+  cell3.innerHTML = result;
+
+  document.getElementById("bookname").value="";
+  document.getElementById("authorname").value="";
+}
+
+</script>
+<!----------- Add book logic----
+<script type="text/javascript">
+  function check_Function() 
+  {
+    var str1 = document.getElementById("bookname").value;
+    var str2 = document.getElementById("authorname").value;
+    if (str1 != "" && str2 != "") 
+    {
+      add_BookFunction();
+    }
+    else
+    {
+      alert("Enter all fields...");
+    }
+  }
+--->
+</script>
+
+
+</body>
+</html>
